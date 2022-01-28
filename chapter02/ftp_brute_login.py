@@ -28,5 +28,5 @@ def brute_login(hostname, passwd_file):
 
 if __name__ == "__main__":
     tgt_host = '192.168.95.179'
-    pass_file = 'userpass.txt'
+    pass_file = 'users.txt'
     brute_login(tgt_host, pass_file)
