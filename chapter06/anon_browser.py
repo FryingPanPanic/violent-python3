@@ -11,12 +11,12 @@ class AnonBrowser(mechanicalsoup.StatefulBrowser):
     library has been implemented here by EONRaider.
     https://github.com/EONRaider """
 
-    def __init__(self, proxies=None, user_agents=None):
+    def __init__(self, proxies=None, user_agent=None):
         super().__init__()
-        self.user_agent = [] if user_agents is None else user_agents
+        self.user_agent = [] if user_agent is None else user_agent
         self.proxies = [] if proxies is None else proxies
         self.session.proxies = None
-        self.user_agents = self.user_agents + ['Mozilla/4.0 ', 'FireFox/6.01',
+        self.user_agent = self.user_agent + ['Mozilla/4.0 ', 'FireFox/6.01',
                                               'ExactSearch', 'Nokia7110/1.0']
         self.cookie_jar = http.cookiejar.CookieJar()
         self.set_cookiejar(self.cookie_jar)
@@ -27,7 +27,8 @@ class AnonBrowser(mechanicalsoup.StatefulBrowser):
         self.set_cookiejar(self.cookie_jar)
 
     def change_user_agent(self):
-        random_user_agent = random.choice(self.user_agents)
+        random_user_agent = random.choice(self.user_agent)
+
         self.user_agent = random_user_agent
 
     def change_proxy(self):
